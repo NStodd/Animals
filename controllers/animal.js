@@ -18,8 +18,15 @@ const router = express.Router()
 
 // ROUTES
 
+// Home Route
+ router.get('/', (req, res) => {
+  	Animal.find().then((animals) =>{res.render('animals/index.ejs', {animals})}) // take this out for user auth
+  	//res.render("animals/index.ejs", {})
+  	// res.render('index.ejs') for when we want the signup/login as landing page
+ })
+
 // Index Route
-router.get('/', (req, res) => {
+router.get('/animals', (req, res) => {
 	console.log(req.session)
 	Animal.find().then((animals) =>{res.render('animals/index.ejs', {animals})}) // take this out for user auth
 	// Animal.find( {user : req.session.user} )
@@ -30,12 +37,12 @@ router.get('/', (req, res) => {
 })
 
 // New Route
-router.get('/new', (req, res) => {
+router.get('/animals/new', (req, res) => {
 	res.render('animals/new.ejs')
 })
 
 // Create Route
-router.post('/', (req, res) => {
+router.post('/animals', (req, res) => {
 	req.body.extinct = req.body.extinct === 'on' ? true : false
 	// req.body.user = req.session.user
 	req.body.lifeExpectancy = parseInt(req.body.lifeExpectancy)
@@ -47,7 +54,7 @@ router.post('/', (req, res) => {
 })
 
 // Edit Route
-router.get('/:id/edit', (req, res) => {
+router.get('/animals/:id/edit', (req, res) => {
 	const id = req.params.id
 
 	Animal.findById(id, (err, targetAnimal) => {
@@ -57,7 +64,7 @@ router.get('/:id/edit', (req, res) => {
 })
 
 // Update Route
-router.put('/:id', (req, res) => {
+router.put('/animals/:id', (req, res) => {
 	req.body.extinct = req.body.extinct === 'on' ? true : false
 	req.body.lifeExpectancy = parseInt(req.body.lifeExpectancy)
 
@@ -71,7 +78,7 @@ router.put('/:id', (req, res) => {
 
 
 // Show Route
-router.get('/:id', (req, res) => {
+router.get('/animals/:id', (req, res) => {
 	Animal.findById(req.params.id)
 	.then((animal) => {
 		res.render('animals/show.ejs', {animal})
@@ -79,7 +86,7 @@ router.get('/:id', (req, res) => {
 })
 
 // Destroy Route
-router.delete('/:id', (req, res) => {
+router.delete('/animals/:id', (req, res) => {
 	Animal.findByIdAndDelete(req.params.id, (err, deletedAnimal) => {
 		console.log(err, deletedAnimal)
 		res.redirect('/animals')

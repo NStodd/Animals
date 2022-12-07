@@ -14,7 +14,6 @@ const MongoStore = require('connect-mongo')
 // Initialize
 const app = express()
 
-
 // MIDDLEWARE
 // 
 
@@ -38,16 +37,17 @@ app.use(express.static('public'))
 // )
 
 // Use the Routers
-app.use('/animals', AnimalRouter)
+app.use('', AnimalRouter)
 console.log("welp, we've made it this far.")
 // app.use('/user', UserRouter)
 console.log("but not this far.")
 
-// Home Route
-app.get('/', (req, res) => {
-	res.render("animals/index.ejs", {})
-	// res.render('index.ejs') for when we want the signup/login as landing page
-})
+// // Home Route
+// app.get('/', (req, res) => {
+// 	Animal.find().then((animals) =>{res.render('animals/index.ejs', {animals})}) // take this out for user auth
+// 	res.render("animals/index.ejs", {})
+// 	// res.render('index.ejs') for when we want the signup/login as landing page
+// })
 
 app.listen(PORT, () => {
 	console.log(`Connected to port ${PORT}`)
