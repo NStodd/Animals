@@ -7,14 +7,16 @@
         <div>
             <a href="/animals/new"><button>Add a New Animal</button></a>
             <!-- <a href="/user/logout"><button>Logout</button></a> -->
+            <div class="animals">
             <% for (animal of animals) { %> 
-                <span>
+                <div class="animal">
                     <a href="/animals/<%= animal._id %> "><h2><%= animal.species %></h2></a>
-                    <h3>    Still alive on earth: <%= !animal.extinct %> </h3>
-                    <h3>    Can be found in <%= animal.location %> places. </h3>
-                    <h3>    Expected to live <%= animal.lifeExpectancy %> years. </h3>
-                </span>
+                    <p>Still alive on earth: <%= !animal.extinct %> </p>
+                    <p>    Can be found in <%= animal.location %> places. </p>
+                    <p>    Expected to live <%= animal.lifeExpectancy %> years. </p>
+                </div>
             <% } %> 
+            </div>
         </div>
     </main>
 </body>

@@ -1,0 +1,20 @@
+h1 {
+    text-align: center;
+    background-color: beige;
+}
+
+main {
+    background-image: "https://vignette1.wikia.nocookie.net/glee/images/d/d0/Circle_of_life_by_lanoya-d4yphwj.jpg/revision/latest?cb=20150529220643";
+}
+
+.animals {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.animal {
+    width: 300px;
+    height: 350px;
+    border-top: 5px solid palegoldenrod;
+}
