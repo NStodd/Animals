@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs')%>
+<body>
+    <%- include('../partials/header.ejs')%>
+    <main>
+        <div>
+            <a href="/animals/new"><button>Add a New Animal</button></a>
+            <!-- <a href="/user/logout"><button>Logout</button></a> -->
+            <% for (animal of animals) { %> 
+                <span>
+                    <a href="/animals/<%= animal._id %> "><h2><%= animal.species %></h2></a>
+                    <h3>    Still alive on earth: <%= !animal.extinct %> </h3>
+                    <h3>    Can be found in <%= animal.location %> places. </h3>
+                    <h3>    Expected to live <%= animal.lifeExpectancy %> years. </h3>
+                </span>
+            <% } %> 
+        </div>
+    </main>
+</body>
+</html>
